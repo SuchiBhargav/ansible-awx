@@ -12,22 +12,22 @@
      debug:
        var: x.failed
 
-#    - name: Installing Docker
-#      package:
-#        name: "docker-ce-18.06.3.ce-3.el7.x86_64"
-#        state: present
-#      register: y
+   - name: Installing Docker
+     package:
+       name: "docker-ce-18.06.3.ce-3.el7.x86_64"
+       state: present
+     register: y
 
-#    - name: Checking Install Status
-#      debug:
-#        var: y.failed
+   - name: Checking Install Status
+     debug:
+       var: y.failed
 
-#    - name: Starting Docker Daemon
-#      service:
-#        name: docker
-#        state: started
-#        enabled: yes
-#      when: y.failed == false
+   - name: Starting Docker Daemon
+     service:
+       name: docker
+       state: started
+       enabled: yes
+     when: y.failed == false
 
    - name: Install
      command: "pip install docker-py"    
