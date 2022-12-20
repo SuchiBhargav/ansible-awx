@@ -7,10 +7,8 @@
         baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
         gpgcheck: no
 
-    - name: Package Installer For Docker
-      package:
-        name: docker-ce-3:18.09.1-3.el7
-        state: present
+    - name: install docker software
+      command: "yum install docker-ce --nobest -y"
 
     - name: Package Installer For Python3 
       package:
