@@ -8,7 +8,7 @@
         gpgcheck: no
 
     - name: install docker software
-      command: "yum install docker-ce --nobest -y"
+      command: "apt-get install docker-ce --nobest -y"
 
     - name: Package Installer For Python3 
       package:
