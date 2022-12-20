@@ -7,8 +7,8 @@
         baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
         gpgcheck: no
 
-    - name: install docker software
-      command: "apt-get install docker-ce --nobest -y"
+#     - name: install docker software
+#       command: "apt-get install docker-ce --nobest -y"
 
     - name: Package Installer For Python3 
       package:
