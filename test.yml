@@ -6,6 +6,23 @@
         description: Yum repo for docker
         baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
         gpgcheck: no
+        
+     - name: error resolve update
+       file:
+         state: directory
+         dest: "cd /etc/yum.repos.d/"
+      
+     - name: run commands
+       commands: "sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*"
+                 
+     - name: run commands1
+       commands: "sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*"
+                 
+     
+     - name: go to root directory
+       file:
+         state: directory
+         dest: "cd ./"
      
      - name: Install Docker
        package:
