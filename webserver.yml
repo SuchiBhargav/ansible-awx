@@ -10,8 +10,8 @@
 #     - name: install docker software
 #       command: "apt-get install docker-ce --nobest -y"
 
-      - name: update software
-        command: "apt-get update"
+    - name: update software
+      command: "apt-get update"
 
 #     - name: Package Installer For Python3 
 #       package:
