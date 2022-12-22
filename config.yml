@@ -30,7 +30,10 @@
 #      when: y.failed == false
 
    - name: Install
-     command: "pwd"    
+     command: "pwd"  
+     
+   - name: Install
+     command: "apt-get update"  
 
 #    - name: Pull a Docker Image
 #      docker_image: 
