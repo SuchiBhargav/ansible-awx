@@ -3,9 +3,9 @@
      - name: Configure yum
        yum_repository:
         name: "docker_repo"
-        description: Yum repo for docker
-        baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
-        gpgcheck: no
+          description: Yum repo for docker
+          baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
+          gpgcheck: no
         
 #      - name: error resolve update
 #        file:
