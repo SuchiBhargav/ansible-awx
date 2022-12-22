@@ -10,34 +10,37 @@
 #     - name: install docker software
 #       command: "apt-get install docker-ce --nobest -y"
 
-    - name: Package Installer For Python3 
-      package:
-        name: python3
-        state: present
+      - name: update software
+        command: "apt-get update"
 
-    - name: Installing python library for the Docker Remote API
-      pip:
-        name: docker-py
+#     - name: Package Installer For Python3 
+#       package:
+#         name: python3
+#         state: present
 
-    - name: Start service docker
-      service:
-        name: docker
-        state: started
+#     - name: Installing python library for the Docker Remote API
+#       pip:
+#         name: docker-py
 
-    - name: Copy Html Code to web server
-      copy:
-        src: ./webPage/
-        dest: /home/Web/
+#     - name: Start service docker
+#       service:
+#         name: docker
+#         state: started
 
-    - name: Create a web container
-      docker_container:
-        name: web
-        image: httpd
-        ports:
-          - "80:80"
-        volumes:
-          - /home/Web:/usr/local/apache2/htdocs/
-      register: status
+#     - name: Copy Html Code to web server
+#       copy:
+#         src: ./webPage/
+#         dest: /home/Web/
 
-    - debug:
-        var: status
+#     - name: Create a web container
+#       docker_container:
+#         name: web
+#         image: httpd
+#         ports:
+#           - "80:80"
+#         volumes:
+#           - /home/Web:/usr/local/apache2/htdocs/
+#       register: status
+
+#     - debug:
+#         var: status
