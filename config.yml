@@ -1,9 +1,9 @@
 
---- # test playbook
-- hosts: all
-  become: true
-  connection: ssh
-  
-  tasks: 
-    name: install packgae
-    action: yum name=httpd state=installed
+  --- # test playbook
+  -hosts: all
+   become: true
+   connection: ssh
+
+   tasks: 
+       name: install packgae
+       action: yum name=httpd state=installed
