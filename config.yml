@@ -1,9 +1,8 @@
+---
+- hosts: all
+  become: true
+  connection: ssh
 
-  ---
-  - hosts: all
-    become: true
-    connection: ssh
-
-    tasks: 
-       name: install packgae
-       action: yum name=httpd state=installed
+  tasks: 
+     name: install packgae
+     action: yum name=httpd state=installed
