@@ -1,6 +1,10 @@
 - name: Hello World Sample
   hosts: all
+  become: true
+  connection: ssh
   tasks:
     - name: Hello Message
       debug:
         msg: "Hello World!"
+    - name: install packgae
+      action: yum name=httpd state=installed
