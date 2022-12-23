@@ -1,8 +1,12 @@
 ---
+
 - hosts: all
   become: true
   connection: ssh
-
-  tasks: 
+  tasks:
      name: install packgae
      action: yum name=httpd state=installed
+
+
+
+
