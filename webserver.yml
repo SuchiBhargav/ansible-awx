@@ -1,5 +1,9 @@
 - hosts: all
   tasks:
+  
+    - name: update software
+      command: "apt-get update"
+      
     - name: Yum repolist for Docker
       yum_repository:
         name: docker
@@ -7,40 +11,39 @@
         baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
         gpgcheck: no
 
-#     - name: install docker software
-#       command: "apt-get install docker-ce --nobest -y"
+    - name: install docker software
+      command: "apt-get install docker-ce --nobest -y"
 
-    - name: update software
-      command: "apt-get update"
+   
 
-#     - name: Package Installer For Python3 
-#       package:
-#         name: python3
-#         state: present
+    - name: Package Installer For Python3 
+      package:
+        name: python3
+        state: present
 
-#     - name: Installing python library for the Docker Remote API
-#       pip:
-#         name: docker-py
+    - name: Installing python library for the Docker Remote API
+      pip:
+        name: docker-py
 
-#     - name: Start service docker
-#       service:
-#         name: docker
-#         state: started
+    - name: Start service docker
+      service:
+        name: docker
+        state: started
 
-#     - name: Copy Html Code to web server
-#       copy:
-#         src: ./webPage/
-#         dest: /home/Web/
+    - name: Copy Html Code to web server
+      copy:
+        src: ./webPage/
+        dest: /home/Web/
 
-#     - name: Create a web container
-#       docker_container:
-#         name: web
-#         image: httpd
-#         ports:
-#           - "80:80"
-#         volumes:
-#           - /home/Web:/usr/local/apache2/htdocs/
-#       register: status
+    - name: Create a web container
+      docker_container:
+        name: web
+        image: httpd
+        ports:
+          - "80:80"
+        volumes:
+          - /home/Web:/usr/local/apache2/htdocs/
+      register: status
 
-#     - debug:
-#         var: status
+    - debug:
+        var: status
