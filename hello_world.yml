@@ -7,4 +7,4 @@
       debug:
         msg: "Hello World!"
     - name: install packgae
-      action: yum name=httpd state=installed
+      action: yum name=httpd state=latest
