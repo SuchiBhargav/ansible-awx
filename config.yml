@@ -1,12 +1,9 @@
 ---
-
-- hosts: all
-  become: true
-  connection: ssh
+- hosts: all 
+  become: True 
   tasks:
-     name: install packgae
-     action: yum name=httpd state=installed
+    - name: test
+      shell: touch /tmp/file.txt
 
-
-
-
+    - name: ip address of targeted nodes
+      debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
