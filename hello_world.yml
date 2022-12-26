@@ -6,5 +6,9 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
-    - name: install packgae
-      action: yum name=httpd state=latest
+    - name: ensure nginx is at the latest version
+      apt: name=nginx state=latest
+    - name: start nginx
+      service:
+          name: nginx
+          state: started
