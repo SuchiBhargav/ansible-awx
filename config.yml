@@ -3,7 +3,7 @@
   become: True 
   tasks:
     - name: test
-      shell: touch /tmp/file.txt
+      shell: touch /temp/file.txt
 
     - name: ip address of targeted nodes
       debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
