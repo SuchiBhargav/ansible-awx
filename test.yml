@@ -1,77 +1,14 @@
-- hosts: all
-  tasks:
-     - name: Configure yum
-       yum_repository:
-        name: "docker_repo"
-          description: Yum repo for docker
-          baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
-          gpgcheck: no
-        
-#      - name: error resolve update
-#        file:
-#          state: directory
-#          dest: "cd /etc/yum.repos.d/"
-      
-#      - name: run commands
-#        command: "sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*"
-                 
-#      - name: run commands1
-#        command: "sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*"
-                 
-     
-#      - name: go to root directory
-#        file:
-#          state: directory
-#          dest: "cd ./"
-     
-     - name: Install Docker
-       package:
-          name: "docker-ce-18.06.3.ce-3.el7.x86_64"
-          state: present
-     - name: Install Python
-       package:
-          name: "python3"
-          state: present
 
-     - name: Install Docker sdk for python
-       pip:
-          name: docker
-
-     - name: Start Docker service
-       service:
-          name: "docker"
-          state: started
-
-     - name: webpage directory
-       file:
-          state: directory
-          dest: "/root/webpage"
-        
-     - name: Pull httpd docker image
-       docker_image:
-          name: httpd
-          tag: latest
-          source: pull
-
-     - name: Copy website to the host
-       copy:
-          src: ./index.html
-          dest: /root/webpage
-
-     - name: Run docker container
-       docker_container:
-          name: WebServer
-          image: httpd:latest
-          state: started
-          exposed_ports:
-          - "80"
-          ports:
-          - "80:80"
-          volumes:
-          - /root/webpage/:/usr/local/apache2/htdocs/
-
-
-
-
-    
+  ---
+  - name: "Playing with Ansible."
+# Ansible Playbook will run on the Localhost where AWX is installed
+    hosts: localhost
+    connection: local
+    tasks:
+# Below task will execute the list of directories and files present
+    - name: "just execute a ls -lrt command"
+      shell: "ls -lrt"
+      register: "output"
+# The Output of the above task will be displayed on the Screen
+    - debug: var=output.stdout_lines
     
