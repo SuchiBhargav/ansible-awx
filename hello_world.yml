@@ -10,7 +10,4 @@
       apt: name=nginx state=latest
     - name: start nginx
       command: service nginx start
-#       service:
-#           name: procps
-#           enabled: true
-#           state: started
+
