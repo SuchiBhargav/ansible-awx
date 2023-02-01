@@ -9,7 +9,8 @@
     - name: ensure nginx is at the latest version
       apt: name=nginx state=latest
     - name: start nginx
-      service:
-          name: procps
-          enabled: true
-          state: started
+      command: service nginx start
+#       service:
+#           name: procps
+#           enabled: true
+#           state: started
