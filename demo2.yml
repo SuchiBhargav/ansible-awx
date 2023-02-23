@@ -1,0 +1,38 @@
+---
+- name: Working with different groups in playbook
+  hosts: all
+  gather_facts: yes
+  become: yes
+  tasks:
+    - ping:
+
+- name: creating file in Dev systems and showing name/ip of that Dev systems
+  hosts: Dev
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: create file in client machine
+      shell: touch file.txt
+
+    - name: print ip address of client machines
+      debug: var=hostvars[inventory_hostname]['ansible_default_ipv4']['address']
+        # msg: "IPv4 address: {{ ansible_default_ipv4.address }}"
+
+- name: copy files from source to destination
+  hosts: Test
+  tasks:
+    - name: copy src.txt
+      copy:
+        src: src.txt
+        dest: /home/biswa/
+
+- name: installing and start nginx in all clients under deploy group
+  hosts: Deploy
+  become: yes
+  tasks:
+    - name: ensure nginx is at the latest version
+      apt: name=nginx state=latest
+
+    - name: start nginx
+      command: service nginx start
+
